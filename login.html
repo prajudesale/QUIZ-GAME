@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TheDebuggers - Login</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Debuggers Quiz!</h1>
+      <p>Please log in to continue.</p>
+    </header>
+    <main>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn">Log In</button>
+      </form>
+      <p id="error" class="error"></p>
+    </main>
+  </div>
+  <script src="login.js"></script>
+  <script>document.getElementById("loginForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            alert("Login Successful!");
+            window.location.href = "dashboard.html"; // Redirect to dashboard
+        } else {
+            document.getElementById("error").textContent = data.error;
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+});
+</script>
+  
+</body>
+</html>

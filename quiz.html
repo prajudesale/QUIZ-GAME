@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TheDebuggers - Quiz</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Quiz Time!</h1>
+      <p>Answer the questions and test your knowledge.</p>
+    </header>
+    <main>
+      <div id="timer">Time Left: <span id="time">20</span>s</div>
+      <div id="quiz"></div>
+      
+      <button id="submit" class="btn">Submit</button>
+      <button id="lifeline" class="btn lifeline">50-50</button>
+      
+      <p id="result" class="result"></p>
+    </main>
+  </div>
+  
+  <!-- Audio element for the sound effect -->
+  <audio id="beep" src="beep.mp3"></audio>
+  <script src="main.js"></script>
+</body>
+</html>
